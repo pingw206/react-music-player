@@ -1,7 +1,8 @@
 import React from 'react';
 import Slider from '../../components/slider';
 import RecommendList from '../../components/list/index';
-
+import {Content} from './style'
+import Scroll from '../../baseUI/scroll/index'
 
 function Recommend() {
 
@@ -18,11 +19,17 @@ function Recommend() {
         }
     });
 
-    return(
-        <div>
-            <Slider bannerList={bannerList}></Slider>
-            <RecommendList recommendList={recommendList}></RecommendList>
-        </div>
+    return( 
+        // Content是滚动的外部容器固定高度，这样子元素高度超过容器高度时可以滚动
+        <Content>
+            <Scroll className="list">
+                <div>
+                    <Slider bannerList={bannerList}></Slider>
+                    <RecommendList recommendList={recommendList}></RecommendList>
+                </div>
+            </Scroll>
+        </Content>
+        
     )
 }
 
